@@ -9,7 +9,7 @@ use anyhow::Result;
 
 fn main() -> Result<()> {
     pretty_env_logger::init();
-    let version: String = "0.1.0".to_string();
+    let version: String = "0.2.0".to_string();
     let app = App::new("dagpi-cli")
         .version(&*version)
         .author("Daggy1234 <daggy@daggy.tech>")

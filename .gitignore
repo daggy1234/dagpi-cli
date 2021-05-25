@@ -1,4 +1,4 @@
 target/
 *.py
 .idea/
-__pycache/**/*
+__pycache__/**/*
