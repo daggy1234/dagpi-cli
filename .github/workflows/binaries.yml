@@ -75,16 +75,16 @@ jobs:
       - name: Copy
         shell: bash
         run: |
-          cp  target/release/${{ env.PROJECT_NAME }} ${{ env.PROJECT_NAME }}
+          cp  target/release/${{ env.PROJECT_NAME }} ${{ env.PROJECT_NAME }}-x86_64-macos
 
       - name: Upload package artifact
         uses: actions/upload-artifact@master
         with:
-          path: ${{ env.PROJECT_NAME }}
+          path: ${{ env.PROJECT_NAME }}-x86_64-macos
 
 
   release:
-    needs: CD
+    needs: [CD, mwheels]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v2
