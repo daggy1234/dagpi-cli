@@ -10,8 +10,8 @@ jobs:
   CD_linux:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        fail-fast: false
         arch:
           - { target: arm-unknown-linux-gnueabihf , use-cross: true }
           - { target: i686-unknown-linux-gnu , use-cross: true }
