@@ -31,6 +31,7 @@ jobs:
           use-cross: ${{ matrix.arch.use-cross }}
           command: build
           args: --release --target=${{ matrix.arch.target }}
+
       - name: Copy
         shell: bash
         if: ${{ matrix.arch.target != 'x86_64-pc-windows-gnu' }}
@@ -45,8 +46,40 @@ jobs:
 
       - name: Upload package artifact
         uses: actions/upload-artifact@master
+        if: ${{ matrix.arch.target != 'x86_64-pc-windows-gnu' }}
         with:
           path: ${{ env.PROJECT_NAME }}-${{ matrix.arch.target }}
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@master
+        if: ${{ matrix.arch.target == 'x86_64-pc-windows-gnu' }}
+        with:
+          path: ${{ env.PROJECT_NAME }}-${{ matrix.arch.target }}.exe
+
+  mwheels:
+    runs-on: macos-latest
+    steps:
+      - name: Extract crate information
+        shell: bash
+        run: |
+            echo "PROJECT_NAME=$(sed -n 's/^name = "\(.*\)"/\1/p' Cargo.toml | head -n1)" >> "$GITHUB_ENV"
+            echo "PROJECT_VERSION=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -n1)" >> "$GITHUB_ENV"
+      - name: Build
+        uses: actions-rs/cargo@v1
+        with:
+            command: build
+            args: --release
+
+      - name: Copy
+        shell: bash
+        run: |
+          cp  target/release/${{ env.PROJECT_NAME }} ${{ env.PROJECT_NAME }}
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@master
+        with:
+          path: ${{ env.PROJECT_NAME }}
+
 
   release:
     needs: CD
