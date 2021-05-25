@@ -1,0 +1,28 @@
+[package]
+name = "dagpi"
+version = "0.1.0"
+authors = ["Daggy1234 <arnav.jindal7@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+structopt = "0.3.13"
+clap="2.33.3"
+dirs="3.0.2"
+console="0.14.1"
+anyhow="1.0.40"
+hyper = { version = "0.14", features=["full"] }
+pretty_env_logger = "0.4.0"
+serde = {version="1.0.126", features=["derive"]}
+serde_json = "1.0.64"
+toml = "0.5.8"
+tokio = { version = "1" }
+indicatif = "0.16.2"
+comfy-table = "2.1.0"
+
+[profile.release]
+panic = "abort"
+
+[[bin]]
+name = "dagpi"
