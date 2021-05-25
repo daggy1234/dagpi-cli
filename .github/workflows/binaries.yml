@@ -59,11 +59,13 @@ jobs:
   mwheels:
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Extract crate information
         shell: bash
         run: |
             echo "PROJECT_NAME=$(sed -n 's/^name = "\(.*\)"/\1/p' Cargo.toml | head -n1)" >> "$GITHUB_ENV"
             echo "PROJECT_VERSION=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -n1)" >> "$GITHUB_ENV"
+
       - name: Build
         uses: actions-rs/cargo@v1
         with:
