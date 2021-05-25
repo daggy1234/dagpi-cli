@@ -17,7 +17,6 @@ jobs:
           - { target: i686-unknown-linux-gnu , use-cross: true, name: dagpi-linux-i786 }
           - { target: x86_64-pc-windows-gnu , use-cross: true, name: dagpi-windows}
           - { target: aarch64-linux-android, use-cross: true, name: dagpi-android}
-          - { target: x86_64-unknown-netbsd, use-cross: true, name: dagpi-netbsd}
           - { target: x86_64-unknown-linux-gnu, name: dagpi-linux }
     steps:
       - uses: actions/checkout@v2
