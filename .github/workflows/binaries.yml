@@ -16,9 +16,7 @@ jobs:
           - { target: arm-unknown-linux-gnueabihf , use-cross: true }
           - { target: i686-unknown-linux-gnu , use-cross: true }
           - { target: x86_64-pc-windows-gnu , use-cross: true }
-          - { target: x86_64-apple-ios , use-cross: true }
           - { target: arm-linux-androideabi, use-cross: true}
-          - { target: arm-apple-ios , use-cross: true }
           - { target: x86_64-unknown-linux-gnu }
     steps:
       - uses: actions/checkout@v2
@@ -33,10 +31,17 @@ jobs:
           use-cross: ${{ matrix.arch.use-cross }}
           command: build
           args: --release --target=${{ matrix.arch.target }}
-      - name: Extract crate information
+      - name: Copy
         shell: bash
+        if: ${{ matrix.arch.target != 'x86_64-pc-windows-gnu' }}
         run: |
           cp  target/${{ matrix.arch.target }}/release/${{ env.PROJECT_NAME }} ${{ env.PROJECT_NAME }}-${{ matrix.arch.target }}
+
+      - name: Copy
+        shell: bash
+        if: ${{ matrix.arch.target == 'x86_64-pc-windows-gnu' }}
+        run: |
+            cp  target/${{ matrix.arch.target }}/release/${{ env.PROJECT_NAME }}.exe ${{ env.PROJECT_NAME }}-${{ matrix.arch.target }}.exe
 
       - name: Upload package artifact
         uses: actions/upload-artifact@master
