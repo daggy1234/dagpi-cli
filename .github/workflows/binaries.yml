@@ -48,13 +48,13 @@ jobs:
         uses: actions/upload-artifact@master
         if: ${{ matrix.arch.target != 'x86_64-pc-windows-gnu' }}
         with:
-          path: ${{ env.PROJECT_NAME }}-${{ matrix.arch.target }}
+          path: ${{ matrix.arch.name }}
 
       - name: Upload package artifact
         uses: actions/upload-artifact@master
         if: ${{ matrix.arch.target == 'x86_64-pc-windows-gnu' }}
         with:
-          path: ${{ env.PROJECT_NAME }}-${{ matrix.arch.target }}.exe
+          path: ${{ matrix.arch.name }}.exe
 
   macos:
     runs-on: macos-latest
