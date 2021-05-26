@@ -10,7 +10,6 @@ use std::io::Write;
 use std::str;
 use std::sync::Arc;
 use std::time::Duration;
-use tokio;
 
 type AnyError = Box<dyn std::error::Error + Send + Sync>;
 
@@ -35,7 +34,7 @@ pub fn run() -> anyhow::Result<()> {
             Ok(r) => r,
             Err(_e) => {
                 println!("{}", style("Error getting Payload").red());
-                println!("");
+                println!();
                 return Ok(());
             }
         };

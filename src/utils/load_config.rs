@@ -1,7 +1,5 @@
 use crate::models::{ClientToken, TomlDump};
-use anyhow;
 use console::style;
-use dirs;
 use std::io::Read;
 use std::path::PathBuf;
 

@@ -1,6 +1,4 @@
-use crate::models::AppParent;
 use crate::utils;
-use comfy_table::Table;
 use console::{style, Emoji};
 
 fn return_status(url: &str, b: bool) {

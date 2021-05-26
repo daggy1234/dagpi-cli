@@ -3,7 +3,6 @@ use console::style;
 use indicatif::{ProgressBar, ProgressStyle};
 use serde::Deserialize;
 use std::time::Instant;
-use ureq;
 
 pub fn get<T: for<'de> Deserialize<'de>>(url: &str) -> Result<T, ureq::Error> {
     let style_spinner = ProgressStyle::default_spinner().template("{prefix} {spinner}   {msg}");
