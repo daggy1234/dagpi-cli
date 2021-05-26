@@ -183,9 +183,16 @@ async fn echo(
         (&Method::POST, "/cli_token") => {
             let whole_body = hyper::body::to_bytes(req.into_body()).await?;
             let str_body = str::from_utf8(&whole_body).unwrap();
-            let reversed_body = whole_body.iter().rev().cloned().collect::<Vec<u8>>();
+            let mut r = Response::new(Body::from("{\"message\": \"Recieved payload\"}"));
+            let h = r.headers_mut();
+            h.insert(
+                "Access-Control-Allow-Origin",
+                "https://dagpi.xyz".parse().unwrap(),
+            );
+            h.insert("Content-Type", "application/json".parse().unwrap());
+
             tx.send(str_body.to_string()).await.unwrap();
-            Ok(Response::new(Body::from(reversed_body)))
+            Ok(r)
         }
         _ => {
             let mut not_found = Response::default();

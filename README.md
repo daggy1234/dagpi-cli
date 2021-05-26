@@ -43,7 +43,7 @@ brew install dagpi --verbose
 Below is a convinence script. Run at your own risk
 
 ```shell
-wget https://github.com/Daggy1234/dagpi-cli/releases/download/v0.3.0/dagpi-macos
+wget https://github.com/Daggy1234/dagpi-cli/releases/download/v0.3.1/dagpi-macos
 chmod +x ./dagpi-macos
 sudo mv ./dagpi-macos /usr/local/bin/dagpi
 sudo chown root: /usr/local/bin/dagpi
@@ -68,7 +68,7 @@ cargo install --git https://github.com/Daggy1234/dagpi-cli --branch main dagpi
 This for x86_64 linux. This will not work on arm. Please Check if your computer is arm (rasberrypi's are arm).
 
 ```shell
-wget https://github.com/Daggy1234/dagpi-cli/releases/download/v0.3.0/dagpi-linux
+wget https://github.com/Daggy1234/dagpi-cli/releases/download/v0.3.1/dagpi-linux
 chmod +x ./dagpi-linux
 sudo install -o root -g root -m 0755 dagpi-linux /usr/local/bin/dagpi
 dagpi -V

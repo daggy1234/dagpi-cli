@@ -1,6 +1,6 @@
 [package]
 name = "dagpi"
-version = "0.3.0"
+version = "0.3.1"
 description="A cli for https://dagpi.xyz"
 authors = ["Daggy1234 <arnav.jindal7@gmail.com>"]
 edition = "2018"
