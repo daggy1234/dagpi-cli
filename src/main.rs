@@ -9,7 +9,7 @@ use anyhow::Result;
 
 fn main() -> Result<()> {
     pretty_env_logger::init();
-    let version: String = "0.2.0".to_string();
+    let version: String = "0.3.0".to_string();
     let app = App::new("dagpi-cli")
         .version(&*version)
         .author("Daggy1234 <daggy@daggy.tech>")
@@ -20,6 +20,13 @@ fn main() -> Result<()> {
         .bin_name("dagpi")
         .subcommand(SubCommand::with_name("login").about("login to dagpi"))
         .subcommand(
+            SubCommand::with_name("app").about("view your dagpi application and it's status"),
+        )
+        .subcommand(
+            SubCommand::with_name("status").about("view information on all of dagpi's apis"),
+        )
+        .subcommand(SubCommand::with_name("tokens").about("view your main dagpi api key"))
+        .subcommand(
             SubCommand::with_name("credentials")
                 .alias("c")
                 .about("view configured dagpi credentials"),
@@ -29,6 +36,12 @@ fn main() -> Result<()> {
         commands::login::run()?;
     } else if matches.subcommand_matches("credentials").is_some() {
         commands::credentials::run()?;
+    } else if matches.subcommand_matches("app").is_some() {
+        commands::app::run()?;
+    } else if matches.subcommand_matches("status").is_some() {
+        commands::status::run()?;
+    } else if matches.subcommand_matches("tokens").is_some() {
+        commands::token::run()?;
     }
     Ok(())
 }
