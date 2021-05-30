@@ -52,7 +52,8 @@ jobs:
           sudo add-apt-repository universe
           sudo apt install p7zip-full p7zip-rar
           cp target/${{ matrix.arch.target }}/release/${{ env.PROJECT_NAME }}.exe ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}/${{ matrix.arch.name }}.exe
-          7z a ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}.zip ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}
+          cd ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}
+          7z a ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}.zip *
 
       - name: Upload package artifact
         uses: actions/upload-artifact@master
@@ -91,8 +92,9 @@ jobs:
         shell: bash
         run: |
           mkdir ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}
-          cp  target/${{ matrix.target }}/release/${{ env.PROJECT_NAME }}.exe ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}/${{ env.PROJECT_NAME }}.exe
-          "/c/Program Files/7-Zip/7z.exe" a ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}.zip ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}
+          cp target/${{ matrix.target }}/release/${{ env.PROJECT_NAME }}.exe ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}/${{ env.PROJECT_NAME }}.exe
+          cd ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}
+          "/c/Program Files/7-Zip/7z.exe" a ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}.zip *
 
       - name: Upload package artifact
         uses: actions/upload-artifact@master
