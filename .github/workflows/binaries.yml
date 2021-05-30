@@ -16,7 +16,6 @@ jobs:
           - { target: aarch64-unknown-linux-gnu , use-cross: true}
           - { target: i686-unknown-linux-gnu , use-cross: true }
           - { target: x86_64-pc-windows-gnu , use-cross: true}
-          - { target: i686-pc-windows-gnu , use-cross: true}
           - { target: aarch64-linux-android, use-cross: true}
           - { target: x86_64-unknown-linux-gnu }
           - { target: x86_64-unknown-linux-musl, use-cross: true}
@@ -50,8 +49,8 @@ jobs:
         shell: bash 
         if: ${{ matrix.arch.target == 'x86_64-pc-windows-gnu' }}
         run: |
-          add-apt-repository universe
-          apt install p7zip-full p7zip-rar
+          sudo add-apt-repository universe
+          sudo apt install p7zip-full p7zip-rar
           cp target/${{ matrix.arch.target }}/release/${{ env.PROJECT_NAME }}.exe ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}/${{ matrix.arch.name }}.exe
           7z a ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}.zip ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}
 
@@ -86,7 +85,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
             command: build
-            args: --release --features auto_updates --release ${{ matrix.target }}
+            args: --release --features auto_updates --target ${{ matrix.target }}
 
       - name: Copy
         shell: bash
