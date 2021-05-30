@@ -1,6 +1,6 @@
 [package]
 name = "dagpi"
-version = "0.3.1"
+version = "0.3.2"
 description="A cli for https://dagpi.xyz"
 authors = ["Daggy1234 <arnav.jindal7@gmail.com>"]
 edition = "2018"
@@ -28,7 +28,6 @@ comfy-table = "2.1.0"
 
 [features]
 auto_updates = []
-fuck=[]
 
 [profile.release]
 panic = "abort"

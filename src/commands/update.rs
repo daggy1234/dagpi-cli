@@ -22,7 +22,7 @@ pub fn run() -> anyhow::Result<()> {
 
 #[cfg(not(feature = "auto_updates"))]
 pub fn run() -> anyhow::Result<()> {
-    println!("Installed via package manager. Please update using it");
+    println!("Installed via package manager. Please update using the package manager used for installation");
     Ok(())
 }
 
