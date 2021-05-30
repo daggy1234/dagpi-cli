@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@master
         if: ${{ matrix.arch.target == 'x86_64-pc-windows-gnu' }}
         with:
-          path: ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}.zip
+          path: ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}/${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}.zip
 
       - name: Upload package artifact
         uses: actions/upload-artifact@master
@@ -99,7 +99,7 @@ jobs:
       - name: Upload package artifact
         uses: actions/upload-artifact@master
         with:
-          path: ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}.zip
+          path: ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}/${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}.zip
 
 
   macos:
