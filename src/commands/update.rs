@@ -7,15 +7,15 @@ pub fn run() -> anyhow::Result<()> {
         .fetch()?;
     println!("found releases:");
     println!("{:#?}\n", releases);
-    // let status = self_update::backends::github::Update::configure()
-    //     .repo_owner("daggy1234")
-    //     .repo_name("dagpi-cli")
-    //     .bin_name("dagpi")
-    //     .show_download_progress(true)
-    //     .current_version(cargo_crate_version!())
-    //     .build()?
-    //     .update()?;
-    // println!("Update status: `{}`!", status.version());
+    let status = self_update::backends::github::Update::configure()
+        .repo_owner("daggy1234")
+        .repo_name("dagpi-cli")
+        .bin_name("dagpi")
+        .show_download_progress(true)
+        .current_version(cargo_crate_version!())
+        .build()?
+        .update()?;
+    println!("Update status: `{}`!", status.version());
     println!("Yes updates will be automatic uwu");
     Ok(())
 }

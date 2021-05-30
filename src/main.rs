@@ -3,6 +3,10 @@ mod commands;
 mod models;
 mod utils;
 
+#[allow(unused_imports)]
+#[macro_use]
+extern crate self_update;
+
 extern crate serde;
 
 use anyhow::Result;

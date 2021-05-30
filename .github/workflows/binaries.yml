@@ -90,14 +90,14 @@ jobs:
       - name: Copy
         shell: bash
         run: |
-          mkdir ${{ env.PROJECT_NAME }}--${{ env.PROJECT_VERSION }}-${{ matrix.target }}
-          cp  target/${{ matrix.target }}/release/${{ env.PROJECT_NAME }}.exe ${{ env.PROJECT_NAME }}--${{ env.PROJECT_VERSION }}-${{ matrix.target }}/${{ env.PROJECT_NAME }}.exe
-          "/c/Program Files/7-Zip/7z.exe" a ${{ env.PROJECT_NAME }}--${{ env.PROJECT_VERSION }}-${{ matrix.target }}.zip ${{ env.PROJECT_NAME }}--${{ env.PROJECT_VERSION }}-${{ matrix.target }}
+          mkdir ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}
+          cp  target/${{ matrix.target }}/release/${{ env.PROJECT_NAME }}.exe ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}/${{ env.PROJECT_NAME }}.exe
+          "/c/Program Files/7-Zip/7z.exe" a ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}.zip ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}
 
       - name: Upload package artifact
         uses: actions/upload-artifact@master
         with:
-          path: ${{ env.PROJECT_NAME }}--${{ env.PROJECT_VERSION }}-${{ matrix.target }}.zip
+          path: ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.target }}.zip
 
 
   macos:
