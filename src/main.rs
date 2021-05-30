@@ -3,9 +3,6 @@ mod commands;
 mod models;
 mod utils;
 
-#[macro_use]
-extern crate self_update;
-
 extern crate serde;
 
 use anyhow::Result;
