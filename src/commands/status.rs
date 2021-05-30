@@ -10,7 +10,7 @@ fn return_status(url: &str, b: bool) {
         );
     } else {
         println!(
-            "{} is {}",
+            r#"{} is {}"#,
             style(url).bright().bold(),
             Emoji("🔴", &*format!("{}", style("offline").red()))
         );
@@ -19,14 +19,18 @@ fn return_status(url: &str, b: bool) {
 
 pub fn run() -> anyhow::Result<()> {
     println!("-------------------------------------");
-    let ping_main = utils::ping("https://api.dagpi.xyz")?;
-    return_status("https://api.dagpi.xyz", ping_main);
+
+    return_status(
+        "https://api.dagpi.xyz",
+        utils::ping("https://api.dagpi.xyz")?,
+    );
     println!("-------------------------------------");
-    let ping_main = utils::ping("https://central.dagpi.xyz")?;
-    return_status("https://central.dagpi.xyz", ping_main);
+    return_status(
+        "https://central.dagpi.xyz",
+        utils::ping("https://central.dagpi.xyz")?,
+    );
     println!("-------------------------------------");
-    let ping_main = utils::ping("https://dagpi.xyz")?;
-    return_status("https://dagpi.xyz", ping_main);
+    return_status("https://dagpi.xyz", utils::ping("https://dagpi.xyz")?);
     println!("-------------------------------------");
     Ok(())
 }

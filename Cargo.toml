@@ -1,6 +1,6 @@
 [package]
 name = "dagpi"
-version = "0.3.1"
+version = "0.3.0"
 description="A cli for https://dagpi.xyz"
 authors = ["Daggy1234 <arnav.jindal7@gmail.com>"]
 edition = "2018"
@@ -19,9 +19,16 @@ serde = {version="1.0.126", features=["derive"]}
 serde_json = "1.0.64"
 toml = "0.5.8"
 tokio = { version = "1" }
+self_update = "0.27.0"
 indicatif = "0.16.2"
 ureq = {version="2.1.1", features=["json"] }
 comfy-table = "2.1.0"
+
+
+
+[features]
+auto_updates = []
+fuck=[]
 
 [profile.release]
 panic = "abort"

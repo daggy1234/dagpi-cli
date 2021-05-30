@@ -1,9 +1,10 @@
 use crate::models::AppParent;
 use crate::utils;
+use anyhow::Result;
 use comfy_table::Table;
 use console::style;
 
-pub fn run() -> anyhow::Result<()> {
+pub fn run() -> Result<()> {
     let config = match utils::parse_config() {
         Ok(c) => c,
         Err(e) => {

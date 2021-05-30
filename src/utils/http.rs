@@ -15,6 +15,7 @@ pub fn get<T: for<'de> Deserialize<'de>>(url: &str) -> Result<T, ureq::Error> {
     let json: T = body.into_json()?;
     let diff = now.duration_since(now);
     let color: String;
+
     if status >= 499 {
         color = format!("{}", style(status.to_string()).red());
         spinner.set_prefix(format!("{}", models::ERROR));
@@ -60,7 +61,7 @@ pub fn ping(url: &str) -> Result<bool, ureq::Error> {
     println!(
         "{} {} {} {}ms",
         style("GET").bold().bright(),
-        url.replace("https://central.dagpi.xyz", ""),
+        url,
         color,
         diff.as_micros()
     );

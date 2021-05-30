@@ -180,6 +180,7 @@ async fn echo(
                 .insert("Content-Type", "application/json".parse().unwrap());
             Ok(r)
         }
+
         (&Method::POST, "/cli_token") => {
             let whole_body = hyper::body::to_bytes(req.into_body()).await?;
             let str_body = str::from_utf8(&whole_body).unwrap();

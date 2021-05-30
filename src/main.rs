@@ -3,6 +3,9 @@ mod commands;
 mod models;
 mod utils;
 
+#[macro_use]
+extern crate self_update;
+
 extern crate serde;
 
 use anyhow::Result;
@@ -26,6 +29,7 @@ fn main() -> Result<()> {
             SubCommand::with_name("status").about("view information on all of dagpi's apis"),
         )
         .subcommand(SubCommand::with_name("tokens").about("view your main dagpi api key"))
+        .subcommand(SubCommand::with_name("update").about("Try to have the CLI update itself"))
         .subcommand(
             SubCommand::with_name("credentials")
                 .alias("c")
@@ -42,6 +46,8 @@ fn main() -> Result<()> {
         commands::status::run()?;
     } else if matches.subcommand_matches("tokens").is_some() {
         commands::token::run()?;
+    } else if matches.subcommand_matches("update").is_some() {
+        commands::update::run()?
     }
     Ok(())
 }
