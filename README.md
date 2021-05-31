@@ -41,7 +41,7 @@ brew install dagpi --verbose
 3) Move to path
 4) Test it out
 
-Below is a convinence script. Run at your own risk
+Below is a convinence script. For user installation
 
 ```shell
 curl -s -L https://github.com/Daggy1234/dagpi-cli/releases/download/v0.4.2/dagpi-0.4.2-x86_64-apple-darwin.tar.gz | tar -xvz -O > ~/.local/bin/dagpi
