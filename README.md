@@ -44,11 +44,8 @@ brew install dagpi --verbose
 Below is a convinence script. Run at your own risk
 
 ```shell
-wget https://github.com/Daggy1234/dagpi-cli/releases/download/v0.3.1/dagpi-macos
-chmod +x ./dagpi-macos
-sudo mv ./dagpi-macos /usr/local/bin/dagpi
-sudo chown root: /usr/local/bin/dagpi
-dagpi -V
+curl -s -L https://github.com/Daggy1234/dagpi-cli/releases/download/v0.4.1/dagpi-0.4.1-x86_64-apple-darwin.tar.gz | tar -xvz -O > ~/.local/bin/dagpi
+chmod +x ~/.local/bin/dagpi
 ```
 
 You can auto update this binary also with `dagpi update`.
