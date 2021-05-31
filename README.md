@@ -17,6 +17,7 @@ cargo install --git https://github.com/Daggy1234/dagpi-cli --branch main dagpi
 1) Head to releases and download the latest `dagpi-windows.exe`
 2) Add the path of the exe file to windows path [guide here](https://www.mathworks.com/matlabcentral/answers/94933-how-do-i-edit-my-system-path-in-windows)
 3) Restart your terminal and the cli should work
+4) CLI can be updated with a simple `dagpi update`
 
 ### Macos
 
@@ -50,6 +51,8 @@ sudo chown root: /usr/local/bin/dagpi
 dagpi -V
 ```
 
+You can auto update this binary also with `dagpi update`.
+
 ### Linux
 
 #### with cargo
@@ -68,10 +71,8 @@ cargo install --git https://github.com/Daggy1234/dagpi-cli --branch main dagpi
 This for x86_64 linux. This will not work on arm. Please Check if your computer is arm (rasberrypi's are arm).
 
 ```shell
-wget https://github.com/Daggy1234/dagpi-cli/releases/download/v0.3.1/dagpi-linux
-chmod +x ./dagpi-linux
-sudo install -o root -g root -m 0755 dagpi-linux /usr/local/bin/dagpi
-dagpi -V
+curl -s -L https://github.com/Daggy1234/dagpi-cli/releases/download/v0.4.1/dagpi-0.4.1-x86_64-unknown-linux-gnu.tar.gz | tar -xvz -O > ~/.local/bin/dagpi
+chmod +x ~/.local/bin/dagpi
 ```
 
 ## Useage
@@ -82,6 +83,28 @@ dagpi -h
 ```
 
 to view all available commands and help
+
+## Updates
+
+### Installed by cargo
+
+You need to rebuild. Use 
+
+```shell
+cargo install --git https://github.com/Daggy1234/dagpi-cli --branch main dagpi
+```
+
+### Installed binary
+
+Dagpi binary updates are pretty nifty.  Just do 
+```cargo
+dagpi update
+```
+and it should handle the rest!
+
+### Package Managers
+
+Use their update system. Dagpi doesn't attempt to update when installed with package managers.
 
 ## Contributing
 
