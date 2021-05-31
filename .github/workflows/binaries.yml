@@ -43,7 +43,7 @@ jobs:
         if: ${{ matrix.arch.target != 'x86_64-pc-windows-gnu' }}
         run: |
           cp  target/${{ matrix.arch.target }}/release/${{ env.PROJECT_NAME }} ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}/${{ matrix.arch.name }}
-          tar -czvf ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}.tar.gz ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}
+          tar -zcvf ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}.tar.gz ${{ env.PROJECT_NAME }}-${{ env.PROJECT_VERSION }}-${{ matrix.arch.target }}/${{ matrix.arch.name }}
 
       - name: Copy
         shell: bash 
