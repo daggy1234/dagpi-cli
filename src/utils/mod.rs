@@ -1,3 +1,6 @@
+#[macro_use]
+pub mod macros;
+
 mod browser;
 mod build_url;
 mod confirm;

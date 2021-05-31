@@ -3,7 +3,7 @@ use console::style;
 use std::io::stdin;
 
 pub fn confirm(prompt_string: &str) -> Result<bool> {
-    println!("{} {}:", prompt_string, style("[y/n]").green());
+    print_flush!("{} {}:", prompt_string, style("[y/n]").green());
     let mut response = String::new();
     stdin().read_line(&mut response)?;
     response = response.split_whitespace().collect(); // remove whitespace

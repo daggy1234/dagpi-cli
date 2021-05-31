@@ -29,8 +29,13 @@ fn main() -> Result<()> {
         .subcommand(
             SubCommand::with_name("status").about("view information on all of dagpi's apis"),
         )
-        .subcommand(SubCommand::with_name("tokens").about("view your main dagpi api key"))
+        .subcommand(
+            SubCommand::with_name("tokens")
+                .alias("token")
+                .about("view your main dagpi api key"),
+        )
         .subcommand(SubCommand::with_name("update").about("Try to have the CLI update itself"))
+        .subcommand(SubCommand::with_name("reset").about("Reset your main dagpi api key"))
         .subcommand(
             SubCommand::with_name("credentials")
                 .alias("c")
@@ -49,6 +54,8 @@ fn main() -> Result<()> {
         commands::token::run()?;
     } else if matches.subcommand_matches("update").is_some() {
         commands::update::run()?
+    } else if matches.subcommand_matches("reset").is_some() {
+        commands::reset_token::run()?
     }
     Ok(())
 }
