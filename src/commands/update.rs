@@ -1,12 +1,5 @@
 #[cfg(feature = "auto_updates")]
 pub fn run() -> anyhow::Result<()> {
-    let releases = self_update::backends::github::ReleaseList::configure()
-        .repo_owner("daggy1234")
-        .repo_name("dagpi-cli")
-        .build()?
-        .fetch()?;
-    println!("found releases:");
-    println!("{:#?}\n", releases);
     let status = self_update::backends::github::Update::configure()
         .repo_owner("daggy1234")
         .repo_name("dagpi-cli")
@@ -16,7 +9,6 @@ pub fn run() -> anyhow::Result<()> {
         .build()?
         .update()?;
     println!("Update status: `{}`!", status.version());
-    println!("Yes updates will be automatic uwu");
     Ok(())
 }
 
