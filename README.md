@@ -14,7 +14,7 @@ cargo install --git https://github.com/Daggy1234/dagpi-cli --branch main dagpi
 
 #### with binary
 
-1) Head to releases and download the latest `dagpi-windows.exe`
+1) Head to releases and download the latest `x86_64-pc-windows-msvc.zip`, extract it and find the `dagpi.exe` binary!
 2) Add the path of the exe file to windows path [guide here](https://www.mathworks.com/matlabcentral/answers/94933-how-do-i-edit-my-system-path-in-windows)
 3) Restart your terminal and the cli should work
 4) CLI can be updated with a simple `dagpi update`
